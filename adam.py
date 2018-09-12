@@ -43,7 +43,7 @@ def do_adam():
     w_b_dw_db = [(init_w, init_b, 0, 0)]
     w_history, b_history, error_history = [], [], []
 
-    w, b, eta, mini_batch_size, num_points_seen = 1, 1, 0.01, 10, 0
+    w, b, eta, mini_batch_size, num_points_seen = 1, 1, 0.01, 40, 0
 
     m_w, m_b, v_w, v_b = 0, 0, 0, 0
     m_w_hat, m_b_hat, v_w_hat, v_b_hat, eps, beta1, beta2 = 0, 0, 0, 0, 1e-8, 0.9, 0.99
