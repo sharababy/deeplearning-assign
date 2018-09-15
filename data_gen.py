@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
-size = 3
+size = 10
 
 X = np.random.rand(size)
 Y = np.random.rand(size)

@@ -78,7 +78,7 @@ class Perceptron():
 		predicted = self.feedforward(inputs)
 
 
-		error_b = outputs-predicted
+		error_b = (predicted-outputs)
 
 		self.sigmoid_backprop(inputs,error_b)
 
@@ -99,8 +99,7 @@ def trail():
 
 	p1 = Perceptron(2)
 
-	epochs = 10000
-	p1.print_params()
+	epochs = 50000
 
 	p1.set_learning_rate(0.1)
 
@@ -108,14 +107,16 @@ def trail():
 		for [x,y,o] in X:
 			p1.error_backprop(np.asarray([x,y]),o,mode="quiet")
 
-	p1.print_params()
+
+	epochs = 10000
 	p1.set_learning_rate(0.01)
 
 	for e in range(epochs):
 		for [x,y,o] in X:
 			p1.error_backprop(np.asarray([x,y]),o,mode="quiet")
 
-	p1.print_params()
+
+	epochs = 5000
 	p1.set_learning_rate(0.001)
 
 	for e in range(epochs):
@@ -131,7 +132,7 @@ def trail():
 	print("test")
 
 	for [x,y,o] in X:
-		print(p1.feedforward(np.asarray([x,y])),o)
+		print(round(p1.feedforward(np.asarray([x,y]))),o)
 
 
 trail()
