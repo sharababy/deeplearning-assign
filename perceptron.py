@@ -1,5 +1,6 @@
 import numpy as np
 import csv
+
 X = []
 
 with open('foo.csv') as csvfile:
@@ -100,40 +101,45 @@ class Perceptron():
 
 		return 0.5*((predicted - outputs)**2)
 
-def trail():
 
-	p1 = Perceptron(2)
 
-	epochs = 200000
 
-	p1.set_learning_rate(0.1)
+if __name__ == "__main__":
 
-	for e in range(epochs):
+	def trail():
+
+		p1 = Perceptron(2)
+
+		epochs = 200000
+
+		p1.set_learning_rate(0.1)
+
+		for e in range(epochs):
+			for [x,y,o] in X:
+				p1.error_backprop(np.asarray([x,y]),o,mode="quiet")
+
+
+		# epochs = 10000
+		# p1.set_learning_rate(0.01)
+
+		# for e in range(epochs):
+		# 	for [x,y,o] in X:
+		# 		p1.error_backprop(np.asarray([x,y]),o,mode="quiet")
+
+
+
+		print("Total Error:")
+		err = 0
 		for [x,y,o] in X:
-			p1.error_backprop(np.asarray([x,y]),o,mode="quiet")
+			err += p1.error(np.asarray([x,y]),o)
+		print(err)
+
+		print("test")
+
+		for [x,y,o] in X:
+			print(p1.feedforward(np.asarray([x,y])),o)
 
 
-	# epochs = 10000
-	# p1.set_learning_rate(0.01)
-
-	# for e in range(epochs):
-	# 	for [x,y,o] in X:
-	# 		p1.error_backprop(np.asarray([x,y]),o,mode="quiet")
-
-
-
-	print("Total Error:")
-	err = 0
-	for [x,y,o] in X:
-		err += p1.error(np.asarray([x,y]),o)
-	print(err)
-
-	print("test")
-
-	for [x,y,o] in X:
-		print(p1.feedforward(np.asarray([x,y])),o)
-
-
-trail()
+	trail()
 
 
